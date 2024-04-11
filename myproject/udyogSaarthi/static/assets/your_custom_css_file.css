@@ -1,0 +1,80 @@
+/* Reset some default margin and padding */
+body, h1, h2, h3, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply a box-sizing border-box model to all elements */
+* {
+    box-sizing: border-box;
+}
+
+/* Style the header */
+header {
+    background-color: #007BFF;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.navbar-brand {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-toggler {
+    display: none;
+}
+
+.navbar-nav {
+    display: flex;
+    list-style: none;
+    margin-left: auto;
+}
+
+.navbar-nav li {
+    margin-left: 10px;
+}
+
+/* Style the main content */
+main {
+    padding: 20px;
+}
+
+/* Style the footer */
+footer {
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Style the container inside the footer */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+/* Style the About us section */
+h5 {
+    color: #007BFF;
+}
+
+/* Style the paragraphs in the About us section */
+p {
+    color: #000;
+    line-height: 1.6;
+}
+
+/* Style the copyright section */
+footer > div:last-child {
+    background-color: lightblue;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}

@@ -1,0 +1,56 @@
+
+{% extends 'base.html' %} {% load static %} {% block title %}Tutorials{% endblock %}
+{% block content %}
+
+  <style>
+    .card {
+      border: 1.5px solid rgba(92, 43, 226, 0.514);
+      padding: 10px;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px 0 rgba(80, 8, 235, 0.2);
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 16px 0 rgba(121, 8, 235, 0.2);
+    }
+  </style>
+  
+    <div class="container "  style="display: flex; flex-direction: column; margin-left: 10px; margin-right: 10px;">
+      <h1 class="text-center">Tutorials</h1>
+
+      <div class="row my-4"   >
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Tutorial 1</h5>
+              <p class="card-text">If you are a beginner and want to decode the syllabus then don't miss out Srushti's strategy. She explains the overall process of the topper's preparation. Shrusti achieved success in the civil services exams in her first attempt. She started her UPSC preparation in her second year of graduation.</p>
+            </div>
+            <iframe width="100%" height="200px" src="https://www.youtube.com/embed/rL3f4w328Ws?si=P_59hwsHBP0nYQF2" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Tutorial 2</h5>
+              <p class="card-text">In this video, Bhupendra Singh teaches about Ancient India. Ancient & Medieval History. It is very important for the UPSC CSE 2022/23 Hindi Prelims and Mains aspirants.</p>
+            </div>
+            <iframe width="100%" height="200px" src="https://www.youtube.com/embed/mqZ04jFZ5FM?si=ZDBiFKtdxYps45sP" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Tutorial 3</h5>
+              <p class="card-text">This lesson starts with a discussion on Rise of Maurya Empire. It is a very important topic in Ancient & Medieval History for the preparation of UPSC Exams. In this lesson, Bhupendra Singh shares his various preparation strategies along with examples which will help you to crack the exam.</p>
+            </div>
+            <iframe width="100%" height="200px" src="https://www.youtube.com/embed/tkaQPaSMKig?si=HFkKh8-x6PGWSSHp" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  {% endblock %}

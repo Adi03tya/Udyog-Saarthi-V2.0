@@ -1,0 +1,64 @@
+{% extends 'base2.html' %} {% load static %} {% block title %}Employer Home{% endblock %}
+{% block content %}
+
+  <style>
+    main{
+
+      background-color: white;
+      width: 100%;
+    }
+    .form-group{
+      margin: 10px;
+      vertical-align: top;
+
+    }
+  </style>
+    <div class="container" style="display: flex; flex-direction: column;">
+    <div><h1 style="display: flex; justify-content: flex-start; padding-left: 20px; margin-top: 10px; margin-bottom: 10px;">Welcome, {{user.username}}!!</h1></div>
+    <div class="" style="border: 1px solid #000000; border-radius: 5px; padding: 20px; margin: 50px;">
+      <h1 class="mb-5 text-uppercase text-center">Post a Job</h1>
+      {% for message in messages %}
+      <h5 style="color: green;">{{message}}</h5>
+      {% endfor %}
+      <div class="container">
+        <form method="post" action="{% url 'employer_home' %}" class="mt-4">
+          {% csrf_token %}
+          <div class="form-group" >
+            <label for="organization_name">Organization Name:</label>
+            <input type="text" id="organization_name" name="organization_name" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="organization_type">Organization Type:</label>
+            <select id="organization_type" name="organization_type" class="form-control">
+              <option value="option1">Government</option>
+              <option value="option2">PSU</option>
+              <option value="option3">Private</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="job_title">Job Title:</label>
+            <input type="text" id="job_title" name="job_title" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="job_description">Job Description:</label>
+            <textarea id="job_description" name="job_description" class="form-control" rows="4" required></textarea>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="num_of_openings">Number of Openings:</label>
+              <input type="number" id="num_of_openings" name="openings" class="form-control">
+            </div>
+            <div class="col">
+              <label for="location">Location:</label>
+              <input type="text" id="location" name="location" class="form-control mb-3">
+            </div>
+          </div>
+          <div class="d-flex justify-content-center pt-3">
+            <button type="submit" class="btn btn-primary mb-3">Post Job</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+ 
+  {% endblock %}

@@ -1,0 +1,339 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Home{% endblock %}
+{% block content %}
+
+
+
+<style>
+  .job-card {
+    border: 1.5px solid rgba(92, 43, 226, 0.514);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(80, 8, 235, 0.2);
+  }
+
+  .job-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(121, 8, 235, 0.2);
+    
+
+  }
+
+  .apply-btn {
+    background-color: blueviolet;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+</style>
+
+<div style="display: flex; flex-direction: column; justify-content: center">
+  <div
+    class="slideshow-container"
+    style="display: flex; justify-content: center; margin: auto"
+  >
+    <div class="mySlides fade">
+      <img
+        src="https://assets.weforum.org/editor/RnDfH5X465zt6zMZOF5vmwXSjvIMakldWwe62vMIoOU.jpg"
+        style="width: 1000px; height: 500px"
+      />
+    </div>
+    <div class="mySlides fade">
+      <img
+        src="https://www.pointfranchise.co.uk/images/zoom/disabled.jpg"
+        style="width: 1000px; height: 500px"
+      />
+    </div>
+    <div class="mySlides fade">
+      <img
+        src="{% static '/assets/job.jpg' %}"
+        style="width: 1000px; height: 500px"
+      />
+    </div>
+  </div>
+  <br />
+  <div style="text-align: center; margin-top: 0px">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+
+  <div
+    class="jobs"
+    style="
+      margin: 50px;
+      margin-left: 10px;
+      margin-right: 10px;
+      box-shadow: 2px 4px 10px 3px rgba(17, 2, 32, 0.2);
+    "
+  >
+    <h1 style="padding-left: 20px">Job Openings</h1>
+
+    <div
+      class="jobs-grid"
+      style="display: grid; padding: 10px; grid-template-columns: 1fr 1fr 1fr"
+    >
+      {% for job in jobs %}
+      <div class="job-card">
+        <h2>{{ job.job_title }}</h2>
+        <h4>Posted By : {{ job.organization_name }}</h4>
+        <p>{{ job.job_description | truncatechars:80 }}</p>
+        <p>Openings: {{ job.openings }}</p>
+        <p>
+          Location: <span style="font-weight: bold">{{ job.location }}</span>
+        </p>
+
+        <div
+          style="
+            display: flex;
+            position: relative;
+            justify-content: end;
+            vertical-align: text-bottom;
+            margin-right: 10px;
+            margin-bottom: 10px;
+          "
+        >
+          {% if user.is_authenticated %}
+          <a href="{% url 'apply_job' job.id %}">
+            <button type="button" class="apply-btn">Apply</button>
+          </a>
+          {% else %}
+          <a href="{% url 'candidate_login' %}">
+            <button type="button" class="apply-btn">Apply</button>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  
+
+
+
+<div class="col-md-12" style="display: grid; border-top: solid black 1px; ">
+  <p class="p1"></p>
+  <section class="serviceSection">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" rel="stylesheet">
+    <div class="serviceRow">
+      <h2 style="text-align: center; font-size: 35px; margin-top: 40px; margin-bottom: 25px;color: var(--text-dark-grey);">
+        Our Services</h2>
+    </div>
+    <div class="serviceRow"  style="display: grid; grid-template-columns: 1fr 1fr 1fr; ">
+      <div class="serviceColumn">
+        <div class="cards">
+          <div class="icon-wrapper">
+            <i class="fas fa-edit"></i>
+          </div>
+          <h3>Job Mapping</h3>
+          <p class="p2">
+            To explore suitable job roles for persons with disability across
+            sectors.
+          </p>
+        </div>
+      </div>
+      <div class="serviceColumn">
+        <div class="cards">
+          <div class="icon-wrapper">
+            <i class="fa fa-file-text"></i>
+          </div>
+          <h3>Accessibility Audit</h3>
+          <p class="p2">
+            To assess Physical accessibility of a worksite and suggest alterations
+            to achieve the same.
+          </p>
+        </div>
+      </div>
+      <div class="serviceColumn">
+        <div class="cards">
+          <div class="icon-wrapper">
+            <i class="fa fa-handshake"></i>
+          </div>
+          <h3>Sensitization Workshop</h3>
+          <p class="p2">
+            To create awareness and attitudinal accessibility at different levels of
+            the workforce in an
+            organisation.
+          </p>
+        </div>
+      </div>
+      <div class="serviceColumn">
+        <div class="cards">
+          <div class="icon-wrapper">
+            <i class="fa fa-american-sign-language-interpreting"></i>
+          </div>
+          <h3>Sign Language Interpreter</h3>
+          <p class="p2">
+            It involves supporting hiring organizations with Sign Language
+            Interpreter for Induction
+            training of PwD workforce (Hearing Impaired or Hearing Hard).
+          </p>
+        </div>
+      </div>
+      <div class="serviceColumn">
+        <div class="cards">
+          <div class="icon-wrapper">
+            <i class="fa fa-list-ul"></i>
+          </div>
+          <h3>Secondary Training</h3>
+          <p class="p2">
+            It involves anticipating and building competencies for future needs to
+            equip the PwD
+            workforce with the required skill set for career development and growth.
+          </p>
+        </div>
+      </div>
+      <div class="serviceColumn">
+        <div class="cards">
+          <div class="icon-wrapper">
+            <i class="fa fa-briefcase"></i>
+          </div>
+          <h3>Return to Work</h3>
+          <p class="p2">
+            Every worker has a probability to acquire a disability or illness that
+            hinders their ability
+            to work. Thus, return to work or rehabilitation of disabled workforce is
+            of immense
+            significance as it assists employees to participate in work and earn a
+            livelihood,
+            contributing to the organisation's growth while also recuperating.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+    
+
+<div class="container">
+<h1>Scrape Data from URL</h1>
+<form method="post" action="{% url 'scrape_data' %}">
+    {% csrf_token %}
+    <label for="url">Enter URL:</label>
+    <input type="text" id="url" name="url">
+    <button type="submit">Scrape Data</button>
+</form>
+</div>
+<div class="container">
+{% if data %}
+    <h2>Scraped Data:</h2>
+    <pre>{{ data }}</pre>
+{% endif %}
+</div>
+
+</div>
+<!-- <div><h1>Web Scraping Form</h1>
+  <form id="scrapeForm">
+      <label for="url">Enter URL to Scrape:</label>
+      <input type="text" id="url" name="url" required>
+      <button type="submit">Scrape Data</button>
+  </form>
+
+  <div id="output">
+     
+  </div>
+
+  <script>
+      document.getElementById('scrapeForm').addEventListener('submit', function(event) {
+          event.preventDefault();
+          var url = this.querySelector('#url').value;
+          scrapeData(url);
+      });
+
+      function scrapeData(url) {
+          fetch('/scrape/', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'X-CSRFToken': getCookie('csrftoken') // Add CSRF token
+              },
+              body: JSON.stringify({ url: url })
+          })
+          .then(response => response.json())
+          .then(data => {
+              document.getElementById('output').innerText = data;
+          })
+          .catch(error => {
+              console.error('Error:', error);
+          });
+      }
+
+      // Function to get CSRF token from cookies
+      function getCookie(name) {
+          var cookieValue = null;
+          if (document.cookie && document.cookie !== '') {
+              var cookies = document.cookie.split(';');
+              for (var i = 0; i < cookies.length; i++) {
+                  var cookie = cookies[i].trim();
+                  if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                      cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                      break;
+                  }
+              }
+          }
+          return cookieValue;
+      }
+  </script> -->
+
+<script>
+  let slideIndex = 0;
+  showSlides();
+
+  function showSlides() {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {
+      slideIndex = 1;
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    setTimeout(showSlides, 3000); // Change image every 2 seconds
+  }
+</script>
+
+
+
+<!-- <form method="post" id="text-to-speech-form">
+  {% csrf_token %}
+  <textarea name="text" placeholder="Enter text..."></textarea>
+  <button type="submit">Generate Speech</button>
+</form>
+<audio controls id="audio-player"></audio>
+
+<script>
+document.getElementById('text-to-speech-form').addEventListener('submit', async function(event) {
+  event.preventDefault();
+  const formData = new FormData(this);
+  const response = await fetch('/generate-speech/', {
+      method: 'POST',
+      body: formData
+  });
+  const data = await response.json();
+  document.getElementById('audio-player').src = data.audio;
+});
+</script> -->
+
+{% endblock %}

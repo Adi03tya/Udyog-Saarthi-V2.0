@@ -1,0 +1,338 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="icon" type="image/x-icon" style="border-radius: 50%;" href="{% static 'assets/logo.png' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+</head>
+
+<body>
+    <header>
+        <!-- <nav class="navbar" style="height: 60px; background-color: #007BFF; color: #007BFF;">
+            <div class="container-fluid">
+                <a class="navbar-brand"  style="color: #007BFF;">
+                    <img src="{% static 'assets/logo.png' %}" alt="Logo" width="30" height="30" style="border-radius: 50%;" class="d-inline-block align-text-top ">
+                    Udyog Sarthi
+                </a>
+                <button class="navbar-toggler" type="button" onclick="toggleNav()" aria-label="Toggle navigation" style="border: none; background-color: transparent; color: black;">
+                    &#9776;
+                </button>
+                <div class="navbar-collapse" id="navbarSupportedContent" style="display: inline;">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'index' %}" style="color: #fff;">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'jobs_page' %}" style="color: #fff;">Jobs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" style="color: #fff;">Notifications</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" onclick="toggleDropdown()" style="color: #fff;">
+                                Learning
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" onclick="window.location.href = 'previous_Year_questions';">Previous Year Question Papers</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="window.location.href = 'tutorials';">Tutorials</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-end">
+                        <li>
+                            <a href="#">
+                                <button type="button" onclick="window.location.href = 'candidate_login';" class="btn btn-success ms-auto mx-3">Candidate Login</button>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <button type="button" onclick="window.location.href = 'employer_login';" class="btn btn-success ms-auto mx-3">Employer Login</button>
+                            </a>
+                        </li>
+                        <li>
+                            <button type="button" class="btn btn-light" onclick="showSignUpModal()">Sign Up</button>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </nav> -->
+        <nav class="nav" style="display: flex; background-color: #007BFF; align-self: flex-start;">
+            <div>
+                <a class="navbar-brand" style="color: #fff;">
+                    <img src="{% static 'assets/logo.png' %}" alt="Logo" width="30" height="30"
+                        style="border-radius: 50%; text-align: center; padding-top: 5px;"
+                        class="d-inline-block align-text-top ">
+                    Udyog Sarthi
+                </a>
+            </div>
+            <div>
+                <ul style="display:inline-flex; text-indent: 10px; list-style-type: none;">
+                    <li><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                    <li><a class="nav-link" href="{% url 'jobs_page' %}">Jobs</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Notifications</a></li>
+
+                    <li><a href="#" onclick="window.location.href = 'previous_Year_questions';">Previous Year Question
+                            Papers</a></li>
+                    <li><a href="#" onclick="window.location.href = 'tutorials';">Tutorials</a></li>
+
+
+            </div>
+            <div class="d-flex align-items-end" style="align-items: end;">
+                <ul style="display: flex; list-style-type: none;">
+                    <li>
+                        <a href="#">
+                            <button type="button" onclick="window.location.href = 'candidate_login';"
+                                class="btn btn-success ms-auto mx-3">Candidate Login</button>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <button type="button" onclick="window.location.href = 'employer_login';"
+                                class="btn btn-success ms-auto mx-3">Employer Login</button>
+                        </a>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-light" onclick="window.location.href='sin'">Sign Up</button>
+                    </li>
+                </ul>
+
+
+            </div>
+        </nav>
+    </header>
+    <main>
+
+        <!-- <div class="card ">
+          <img src="https://assets.weforum.org/editor/RnDfH5X465zt6zMZOF5vmwXSjvIMakldWwe62vMIoOU.jpg" alt="" class="" style="height: 500px; width:auto;">
+      
+           
+      </div> -->
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://assets.weforum.org/editor/RnDfH5X465zt6zMZOF5vmwXSjvIMakldWwe62vMIoOU.jpg"
+                        class="d-block w-100" style="height: 600px; width:auto;" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.pointfranchise.co.uk/images/zoom/disabled.jpg" class="d-block w-100"
+                        style="height: 600px; width:auto;" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static '/assets/job.jpg' %}" class="d-block w-100" style="height: 600px; width:auto;"
+                        alt="...">
+                </div>
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+
+        <h1 class="my-5 mx-3">Jobs</h1>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for job in jobs %}
+            <div class="col">
+                <div class="card">
+                    <!-- <img style="height: 50px; width: 50px; " src="https://www.accenture.com/in-en/careers/jobdetails/_jcr_content/root/container_main/container/joblistinghero/image.coreimg.svg/1686266251822/acc-gt-dimensional-purple-rgb-rev.svg" class="card-img-top mx-3 my-2" alt="..."> -->
+                    <h3 class="domain mt-2" style="padding-left: 10px;">{{job.organization_name}}</h3>
+                    <div class="card-body">
+                        <h5 class="card-title">{{job.job_title}}</h5>
+                        <h6 class="domain mt-2">Domain : </h6>
+                        <p>Technology</p>
+                        <h6 class="description mt-2">job Description :</h6>
+                        <p class="card-text">{{job.job_description}}</p>
+                        <h6 class="description mt-2">Openings :</h6>
+                        <p class="card-text">{{job.openings}}</p>
+                        <h6 class="location">Location : </h6>
+                        <p>{{job.location}}</p>
+                        <div class="text-center">
+                            <a href="{% url 'candidate_login' %}">
+                                <button type="button" class="btn btn-primary">Apply</button>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <hr class="my-4 ">
+        <div class="my-3" style="padding: 10px;">
+            <h3 class="text-center">Accesible to Candidates with 21 disability types</h3>
+            <div class="my-3 row row-cols-1 row-cols-md-6 g-3 text-center">
+                <div class="col ">
+                    <div class="card bg-primary text-white" style="padding: 20px;">
+                        <h5>Locomotor Disability</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-success text-white" style="padding: 20px;">
+                        <h5>Hearing Impairment</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-danger text-white" style="padding: 20px;">
+                        <h5>Blindness</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-info text-white" style="padding: 20px;">
+                        <h5>Low Vision</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-warning text-white" style="padding: 20px;">
+                        <h5>Intellectual Disability</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-primary text-white" style="padding: 20px;">
+                        <h5>Acid Attack Victim</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-success text-white" style="padding: 20px;">
+                        <h5>Autism Spectrum Disorder</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-danger text-white" style="padding: 20px;">
+                        <h5>Cerebral Palsy</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-info text-white" style="padding: 20px;">
+                        <h5>Chronic Neurological Conditions</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-warning text-white" style="padding: 20px;">
+                        <h5>Dwarfism</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-primary text-white" style="padding: 20px;">
+                        <h5>Hemophilia</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-success text-white" style="padding: 20px;">
+                        <h5>Leprosy Cured Persons</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-danger text-white" style="padding: 20px;">
+                        <h5>Mental Illness</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-info text-white" style="padding: 20px;">
+                        <h5>Multiple Disabilities</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-warning text-white" style="padding: 20px;">
+                        <h5>Multiple Sclerosis</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-warning text-white" style="padding: 20px;">
+                        <h5>Muscular Dystrophy</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-primary text-white" style="padding: 20px;">
+                        <h5>Parkinson's Disease</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-success text-white" style="padding: 20px;">
+                        <h5>Sickle Disease</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-danger text-white" style="padding: 20px;">
+                        <h5>Specific Learning Disability</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-info text-white" style="padding: 20px;">
+                        <h5> Speech and Language Disability</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-warning text-white" style="padding: 20px;">
+                        <h5>Thalassemia</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer class="bg-light text-center border border-1px border-dark mt-5 text-lg-start ">
+        <!-- Grid container -->
+        <div class="container p-4 my-5">
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+
+                <h5 class="text-uppercase">About us</h5>
+
+                <p>
+                    The purpose of the <b>Udyog Saarthi</b> is to address the significant challenges faced by
+                    individuals with disabilities in accessing employment opportunities and acquiring essential job
+                    skills. This digital platform is designed with a profound commitment to empower this demographic
+                    group by providing them not only with the means to secure meaningful employment but also with
+                    avenues for skill development and personal growth. In essence, the project seeks to enhance the
+                    quality of life for individuals with disabilities by promoting self-reliance and economic
+                    independence.
+                </p>
+
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: lightblue;">
+            © 2020 Copyright:
+            <a class="text-dark" href="https://mdbootstrap.com/">Udyog Sarthi.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+    <script>
+        function toggleNav() {
+            var nav = document.getElementById('navbarSupportedContent');
+            nav.style.display = (nav.style.display === 'none' || nav.style.display === '') ? 'block' : 'none';
+        }
+
+        function toggleDropdown() {
+            var dropdown = document.querySelector('.dropdown-menu');
+            dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
+        }
+
+        function showSignUpModal() {
+            var modal = document.getElementById('staticBackdrop');
+            modal.style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

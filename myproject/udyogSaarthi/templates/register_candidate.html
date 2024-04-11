@@ -1,0 +1,188 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %}Register candidate{% endblock %}
+
+{% block content %}
+    <style>
+        /* Your CSS styles here */
+    </style>
+
+    <section class="h-100 bg-light border border-1px border-dark my-2 mx-5">
+        <div class="container py-5">
+            <div class="row justify-content-center align-items-center">
+                <div class="col">
+                    <div class="card-body p-md-5 text-black">
+                        <h3 class="mb-5 text-uppercase text-center">Create Learning Profile</h3>
+                        {% for message in messages %}
+                            <h5 style="color: red;">{{ message }}</h5>
+                        {% endfor %}
+                        <form id="registrationForm" action="{% url 'register_candidate' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                              <div class="col-md-6 mb-4">
+                                <div class="form-group">
+                                  <label for="first_name">First name</label>
+                                  <input type="text" name="first_name" id="first_name" class="form-control" />
+                                </div>
+                              </div>
+                              <div class="col-md-6 mb-4">
+                                <div class="form-group">
+                                  <label for="last_name">Last name</label>
+                                  <input type="text" name="last_name" id="last_name" class="form-control" />
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="mothers_name">Mother's name</label>
+                              <input type="text" name="mothers_name" id="mothers_name" class="form-control" />
+                            </div>
+
+                            <div class="form-group">
+                              <label for="fathers_name">Father's name</label>
+                              <input type="text" name="fathers_name" id="fathers_name" class="form-control" />
+                            </div>
+
+                            <div class="form-group">
+                              <label for="address">Address</label>
+                              <input type="text" name="address" id="address" class="form-control" />
+                            </div>
+
+                            <div class="radio-group">
+                              <h6>Gender:</h6>
+                              <div>
+                                <input type="radio" name="gender" id="femaleGender" value="female">
+                                <label for="femaleGender">Female</label>
+                              </div>
+                              <div>
+                                <input type="radio" name="gender" id="maleGender" value="male">
+                                <label for="maleGender">Male</label>
+                              </div>
+                              <div>
+                                <input type="radio" name="gender" id="otherGender" value="other">
+                                <label for="otherGender">Other</label>
+                              </div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6 form-group">
+                                <select name="state" class="select">
+                                  <option value="1">State</option>
+                                  <option value="2">Option 1</option>
+                                  <option value="3">Option 2</option>
+                                  <option value="4">Option 3</option>
+                                </select>
+                              </div>
+                              <div class="col-md-6 form-group">
+                                <select name="city" class="select">
+                                  <option value="1">City</option>
+                                  <option value="2">Option 1</option>
+                                  <option value="3">Option 2</option>
+                                  <option value="4">Option 3</option>
+                                </select>
+                              </div>
+                              <div class="col-md-6 form-group">
+                                <label for="pincode">Pincode</label>
+                                <input type="number" name="pincode" id="pincode" class="form-control" />
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="DOB">DOB</label>
+                              <input type="date" name="DOB" id="DOB" class="form-control" />
+                            </div>
+
+                            <div class="form-group">
+                              <label for="email">Email ID</label>
+                              <input type="email" name="email" id="email" class="form-control" placeholder="eg: john@gmail.com" />
+                            </div>
+
+                            <div class="form-group">
+                              <label for="username">Username</label>
+                              <input type="text" name="username" id="username" class="form-control" placeholder="eg: john@123" />
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6 form-group">
+                                <select name="qualification" class="select">
+                                  <option value="1">Select</option>
+                                  <option value="2">10th</option>
+                                  <option value="3">12th</option>
+                                  <option value="3">Diploma</option>
+                                  <option value="4">Graduate</option>
+                                  <option value="4">Post Graduate</option>
+                                </select>
+                              </div>
+                              <div class="col-md-6 form-group">
+                                <label for="stream">Course Stream</label>
+                                <input type="text" name="stream" id="stream" class="form-control" />
+                              </div>
+                              <div class="col-md-6 form-group">
+                                <label for="skills">Skills</label>
+                                <input type="text" name="skills" id="skills" class="form-control" />
+                              </div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6 form-group">
+                                <label for="UDID">Unique Disability ID (UDID)</label>
+                                <input type="text" name="UDID" id="UDID" class="form-control" />
+                              </div>
+                              <div class="col-md-6 form-group">
+                                <label for="functional_difficulties">Functional Difficulties</label>
+                                <input type="text" name="functional_difficulties" id="functional_difficulties" class="form-control" />
+                              </div>
+                              <div class="col-md-6 form-group">
+                                <label for="assistive_device">Assistive Devices Used</label>
+                                <input type="text" name="assistive_device" id="assistive_device" class="form-control" />
+                              </div>
+                              <div class="col-md-6 form-group">
+                                <label for="human_assistance">Human Assistance Requirements</label>
+                                <input type="text" name="human_assistance" id="human_assistance" class="form-control" />
+                              </div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-6 form-group">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" id="password" class="form-control" />
+                              </div>
+                              <div class="col-md-6 form-group">
+                                <label for="confirm_password">Confirm Password</label>
+                                <input type="password" name="confirm_password" id="confirm_password" class="form-control" />
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                            </form>
+                            </div>
+                            </div>
+                            </div>
+                            </section>
+
+                            <div id="liveAlertPlaceholder"></div>
+
+                            <script>
+                            // JavaScript code goes here
+                            const form = document.getElementById('registrationForm');
+                            const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+
+                            form.addEventListener('submit', function (event) {
+                              event.preventDefault();
+                              appendAlert('Nice, you have registered successfully!', 'success');
+                            });
+
+                            function appendAlert(message, type) {
+                              const alert = document.createElement('div');
+                              alert.classList.add('alert');
+                              alert.classList.add(`alert-${type}`);
+                              alert.innerHTML = `
+                                <div>${message}</div>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                              `;
+                              alertPlaceholder.appendChild(alert);
+                            }
+                            </script>
+                            {% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Candidate Home{% endblock %}
+{% block content %}
+
+<style>
+  main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+   
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    margin-top: 100px;
+   
+  }
+  .job-card {
+    border: 1.5px solid rgba(92, 43, 226, 0.514);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(80, 8, 235, 0.2);
+  }
+
+  .job-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(121, 8, 235, 0.2);
+    
+
+  }
+
+  .apply-btn {
+    background-color: blueviolet;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>
+
+ <div class="container" style="display:flex; flex-direction: column;">
+   <div style="margin-top: -100px;"> <h1 >Apply for Job</h1></div>
+    <div class="job-card" style="display: flex; margin: 20px;">
+      <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="job_id" value="{{ job.id }}">
+        <h4>{{ job.job_title }}</h4>
+        <h5>Organization: <span style="font-weight: 100;">{{ job.organization_name }}</span></h5>
+        <h5>Job Description:<span style="font-weight: 100;">{{ job.job_description }}</span> </h5>
+        <h5>Openings:<span style="font-weight: 100;"> {{ job.openings }}</span></h5>
+        <h5>Location: <span style="font-weight: 100;">{{ job.location }}</span></h5>
+        <button type="submit" class="apply-btn" onclick="apply()">Apply</button>
+      </form>
+    </div>
+  </div>
+
+
+ {% endblock %}

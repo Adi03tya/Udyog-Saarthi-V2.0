@@ -1,0 +1,96 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Candidate Home{% endblock %}
+{% block content %}
+  
+
+
+<style>
+  .job-card {
+    border: 1.5px solid rgba(92, 43, 226, 0.514);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(80, 8, 235, 0.2);
+  }
+
+  .job-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(121, 8, 235, 0.2);
+    
+
+  }
+
+  .apply-btn {
+    background-color: blueviolet;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>
+<div class="container" style="display: flex; flex-direction: column;">
+<div class="Applied_jobs" style="display:inline-block;">
+    {% if user.is_authenticated %}
+   
+    <h1 class="my-4 mx-3">Jobs You Have Applied For</h1>
+    <ul class="my-2 mx-3">
+      {% for applied_job in applied_jobs reversed %}
+      <li class="applied-job">{{ applied_job.job_title }} - {{ applied_job.organization_name }}</li>
+      {% empty %}
+      <li>You haven't applied for any jobs yet.</li>
+      {% endfor %}
+    </ul>
+    
+    {% endif %}
+  </div>  
+    <div
+    class="jobs"
+    style="
+      margin: 50px;
+      margin-left: 10px;
+      margin-right: 10px;
+      padding-top: 10px;
+      box-shadow: 2px 4px 10px 3px rgba(17, 2, 32, 0.2);
+    ">
+    <h1 style="padding-left: 20px; text-align: center; margin-bottom: 20px;">Job Openings</h1>
+
+    <div
+      class="jobs-grid"
+      style="display: grid; padding: 10px; grid-template-columns: 1fr 1fr 1fr"
+    >
+      {% for job in jobs %}
+      <div class="job-card">
+        <h2>{{ job.job_title }}</h2>
+        <h4>Posted By : {{ job.organization_name }}</h4>
+        <p>{{ job.job_description |truncatechars:80 }}</p>
+        <p>Openings: {{ job.openings }}</p>
+        <p>
+          Location: <span style="font-weight: bold">{{ job.location }}</span>
+        </p>
+
+        <div
+          style="
+            display: flex;
+            position: relative;
+            justify-content: end;
+            vertical-align: text-bottom;
+            margin-right: 10px;
+            margin-bottom: 10px;
+          "
+        >
+          {% if user.is_authenticated %}
+          <a href="{% url 'apply_job' job.id %}">
+            <button type="button" class="apply-btn">Apply</button>
+          </a>
+          {% else %}
+          <a href="{% url 'candidate_login' %}">
+            <button type="button" class="apply-btn">Apply</button>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+ 
+  {% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'base.html' %} {% load static %} {% block title %}PYQ's{% endblock %}
+{% block content %}
+    
+
+    <style>
+        
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+         
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+         
+            justify-content: space-evenly;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding-left: 80px;
+            padding-right: 80px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            text-align: center;
+            border: 1px solid #dddddd;
+        }
+
+        .btn {
+            color: blue;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+        <div class="container">
+            <h1>Previous Year Question Papers</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Paper</th>
+                        <th>Pdf</th>
+                        <th>Braille Pdf</th>
+                        <th>English Audio</th>
+                        <th>Hindi Audio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pyq in PYQs %}
+                    <tr>
+                        <td>{{ pyq.name }}</td>
+                        <td><a href="{{ pyq.pdf.url }}" class="btn" target="_blank">File</a></td>
+                        <td><a href="{{ pyq.Braille_pdf.url }}" class="btn" target="_blank">File</a></td>
+                        <td><a href="{{ pyq.Audio_English.url }}" class="btn" target="_blank">File</a></td>
+                        <td><a href="{{ pyq.Audio_Hindi.url }}" class="btn" target="_blank">File</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    
+
+ 
+
+  {% endblock %}

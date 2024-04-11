@@ -1,0 +1,332 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">  
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ltWn6/BrZiKTdYT0F6Oq4Wt1qLsBRN3dHCA3Dn/dzp5nqT+KXnJL2OqIRNmFP+0M" crossorigin="anonymous"></script>
+
+    <style>
+    #footer {
+      height: fit-content;
+    }
+ .dropdown {
+  /* position: relative; */
+  display: inline-block;
+}
+.list{
+    display: flex;
+    list-style: none;
+    color: white  ;
+}
+body {
+      font-size: 16px; /* Default font size */
+    }
+
+.login-btn , .register-btn{
+
+    border: none;
+   
+    margin-left: 5px;
+    margin-right: 5px; 
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffff;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a{
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+ 
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .login-btn {
+  background-color: #3e8e41;
+}
+
+body, div, h1, p, footer {
+      transition: background-color 0.3s ease, color 0.3s ease; /* Added color transition */
+    }
+
+    .light {
+      background-color: #ffffff;
+      color: #333333;
+    }
+    .dark {
+      background-color: #000000;
+      color: #ffffff;
+    }
+    .pink {
+      background-color: #000000;
+      color: #ff33ff;
+    }
+    .yellow {
+      background-color: #000000;
+      color: #ffff99;
+    }
+    .blue {
+      background-color: #000000;
+      color: #243dff;
+    }
+    .green {
+      background-color:#000000;
+      color: #09f609;
+    }
+    </style>
+
+</head>
+
+<body id="mainBody"  >
+    <header id = "header" >
+        <nav >
+          <div  style="display:flex; justify-content: end; padding: 10px; background-color: #000000;" >
+           
+            <label class="accessibleOption" title="Change Font Size" style="color: #ffffff;">  Font-size: </label>
+            <button class="accessibleOption" onclick="decreaseSize()" tabindex="0" title="Decrease Font Size">-</button>
+            <button class="accessibleOption" onclick="defaultSize()" tabindex="0" title="Set Default Font Size">A</button>
+            <button class="accessibleOption" onclick="increaseSize()" tabindex="0" title="Increase Font Size">+</button>
+            <label class="accessibleOption" title="Change Color Theme" style="color: #ffffff;"> | Select Theme: </label>
+            <button class="accessibleOption" id="light-button" onclick="setLightTheme()" tabindex="0" title="Select Light Theme" style="background-color: #ffffff; color:black" >L</button>
+            <button class="accessibleOption" id="dark-button" onclick="setDarkTheme()" tabindex="0" title="Select Dark Theme" style="background-color: black; color:#ffffff;">D</button>
+            <button class="accessibleOption" id="pink-button" onclick="setPinkTheme()" tabindex="0" title="Select Pink Theme"style="background-color:#ff33ff; color:black;">P</button>
+            <button class="accessibleOption" id="yellow-button" onclick="setYellowTheme()" tabindex="0" title="Select Yellow Theme" style="background-color: #ffff99; color:black;">Y</button>
+            <button class="accessibleOption" id="blue-button" onclick="setBlueTheme()" tabindex="0" title="Select Blue Theme" style="background-color:#1529b6; color:black;">B</button>
+            <button class="accessibleOption" id="green-button" onclick="setGreenTheme()" tabindex="0" title="Select Green Theme"style="background-color:green ; color:black;">G</button>
+          </div>
+        </nav>
+        <header id="header">
+          <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+            <div class="logo">
+              <div class="d-flex">
+              <div>
+                <img class="img" src="{% static 'assets/logo.png' %}">
+              </div>
+              <div class="mt-2">
+                <p>Udyog Saarthi</p>
+              </div>
+            </div>
+          </div>
+            <div class="sections">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item" >
+                  <a class="nav-link" style="color: #ffffff;" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" style="color: #ffffff;" href="{% url 'jobs_page' %}">Jobs</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" style="color: #ffffff;"  href="#">Notifications</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" style="color: #ffffff;"  href="{% url 'previous_Year_questions' %}">PYQ'S</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" style="color: #ffffff;"  href="{% url 'tutorials' %}">Tutorials</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="user">
+              {% if user.is_authenticated %}
+              <div class="sections">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <img class="img" src="{% static 'assets/profile.png' %}">
+                  </li>
+                  <li class="nav-item">
+                    <button class="btn btn-danger"><a href="{% url 'logout_page' %}">Logout</a></button>
+                  </li>
+                </ul>
+              </div>
+              {% else %}
+              
+              <div class="sections" style="margin-right: 10px;">
+                <div class="dropdown">
+                  <button class="login-btn" style="background-color:#09ff26;">login</button>
+                  <div class="dropdown-content">
+                    <a class="dropdown-item" href="{% url 'candidate_login' %}">Login as Candidate</a>
+                    <a class="dropdown-item" href="{% url 'employer_login' %}">Login as Employer</a>
+                  </div>
+              </div>
+                <div class="dropdown">
+                  <button class="register-btn" style="background-color:#ff09ff;">Register</button>
+                  <div class="dropdown-content">
+                    <a class="dropdown-item" href="{% url 'register_candidate_new' %}">Register as <br> Candidate</a>
+                    <a class="dropdown-item" href="{% url 'register_employer' %}">Register as <br> Employer</a>
+                  </div>
+              </div>
+              </div>
+              {% endif %}
+            </div>
+          </nav>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+        </header>
+
+    </header>
+    <main id="content"  >
+     
+        {% block content %}
+
+        {% endblock %}
+      
+    </main>
+    <footer id="footer" class="footer" style="margin-top: 80px;"></footer>
+    
+            <div class=" border-top border-primary p-2 border-1" style="box-shadow: #000000;">
+            <div><h3 class="footer-description m-2" style=" text-align: center;">About us</h3></div>
+            <div style="text-align: justify; padding-left: 5px;">
+            <p>
+                The purpose of the <b>Udyog Saarthi</b> is to address the significant challenges faced by individuals with disabilities in accessing employment opportunities and acquiring essential job skills. This digital platform is designed with a profound commitment to empower this demographic group by providing them not only with the means to secure meaningful employment but also with avenues for skill development and personal growth. In essence, the project seeks to enhance the quality of life for individuals with disabilities by promoting self-reliance and economic independence.
+            </p></div>
+            <div id="footer" class="copyright">
+                <p id="footer">© 2020 Udyog Sarthi.com</p>
+            </div>
+          </div>
+
+       
+    </footer>
+    <script>
+      function setThemeById(id, themeClass) {
+        var element = document.getElementById(id);
+        if (element) {
+          element.className = themeClass;
+        }
+      }
+      
+      function applyTheme(theme) {
+    setThemeById('mainBody', theme);
+    setThemeById('header', theme);
+    setThemeById('content', theme);
+    setThemeById('footer', theme);
+    // Add more elements if needed
+  }
+      function setLightTheme(theme) {
+        setThemeById('mainBody', theme);
+        setThemeById('header', theme);
+        setThemeById('content', theme);
+        setThemeById('footer', theme);
+        // Add more elements if needed
+      }
+    
+      function setDarkTheme(theme) {
+        setThemeById('mainBody', theme);
+        setThemeById('header', theme);
+        setThemeById('content', theme);
+        setThemeById('footer', theme);
+        // Add more elements if needed
+      }
+    
+      function setPinkTheme(theme) {
+        setThemeById('mainBody', theme);
+        setThemeById('header', theme);
+        setThemeById('content', theme);
+        setThemeById('footer', theme);
+        // Add more elements if needed
+      }
+    
+      function setYellowTheme(theme) {
+        setThemeById('mainBody', theme);
+        setThemeById('header', theme);
+        setThemeById('content', theme);
+        setThemeById('footer', theme);
+        // Add more elements if needed
+      }
+    
+      function setBlueTheme(theme) {
+        setThemeById('mainBody', theme);
+        setThemeById('header', theme);
+        setThemeById('content', theme);
+        setThemeById('footer', theme);
+        // Add more elements if needed
+      }
+    
+      function setGreenTheme(theme) {
+        setThemeById('mainBody', theme);
+        setThemeById('header', theme);
+        setThemeById('content', theme);
+        setThemeById('footer', theme);
+        // Add more elements if needed
+      }
+      function saveTheme(theme) {
+    localStorage.setItem('selectedTheme', theme);
+  }
+
+  // Function to load selected theme from local storage
+  function loadTheme() {
+    var selectedTheme = localStorage.getItem('selectedTheme');
+    if (selectedTheme) {
+      applyTheme(selectedTheme);
+    }
+  }
+
+  // Event listener to apply theme on page load
+  window.addEventListener('load', loadTheme);
+
+  // Theme setting functions
+  function setLightTheme() {
+    applyTheme('light');
+    saveTheme('light');
+  }
+
+  function setDarkTheme() {
+    applyTheme('dark');
+    saveTheme('dark');
+  }
+
+  function setPinkTheme() {
+    applyTheme('pink');
+    saveTheme('pink');
+  }
+
+  function setYellowTheme() {
+    applyTheme('yellow');
+    saveTheme('yellow');
+  }
+
+  function setBlueTheme() {
+    applyTheme('blue');
+    saveTheme('blue');
+  }
+
+  function setGreenTheme() {
+    applyTheme('green');
+    saveTheme('green');
+  }
+
+  function decreaseSize() {
+    var currentSize = parseFloat(window.getComputedStyle(document.body).fontSize);
+    document.body.style.fontSize = (currentSize - 2) + 'px';
+  }
+
+  function defaultSize() {
+    document.body.style.fontSize = '16px'; // Change to your default font size
+  }
+
+  function increaseSize() {
+    var currentSize = parseFloat(window.getComputedStyle(document.body).fontSize);
+    document.body.style.fontSize = (currentSize + 2) + 'px';
+  }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+</body>
+</html>
