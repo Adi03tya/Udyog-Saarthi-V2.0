@@ -98,8 +98,11 @@ body, div, h1, p, footer {
     <header id = "header" >
         <nav >
           <div  style="display:flex; justify-content: end; padding: 10px; background-color: #000000;" >
-           
-            <label class="accessibleOption" title="Change Font Size" style="color: #ffffff;">  Font-size: </label>
+            
+            <!-- <button onclick="scrapeData()">Read This Page</button> -->
+            
+            <button onclick="submitForm()">Read This Page</button>
+            <label class="accessibleOption" title="Change Font Size" style="color: #ffffff; margin-left: 5px;">  Font-size: </label>
             <button class="accessibleOption" onclick="decreaseSize()" tabindex="0" title="Decrease Font Size">-</button>
             <button class="accessibleOption" onclick="defaultSize()" tabindex="0" title="Set Default Font Size">A</button>
             <button class="accessibleOption" onclick="increaseSize()" tabindex="0" title="Increase Font Size">+</button>
@@ -149,7 +152,8 @@ body, div, h1, p, footer {
               <div class="sections">
                 <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                    <img class="img" src="{% static 'assets/profile.png' %}">
+                    <a  href="{% url 'candidate_profile' %}">
+                    <img class="img"  href="{% url 'candidate_profile' %}" src="{% static 'assets/profile.png' %}"></a>
                   </li>
                   <li class="nav-item">
                     <button class="btn btn-danger"><a href="{% url 'logout_page' %}">Logout</a></button>
@@ -204,6 +208,37 @@ body, div, h1, p, footer {
 
        
     </footer>
+    <script>
+      function submitForm() {
+          // Define the specific URL
+          var url = window.location.href; // Replace this with your specific URL
+          
+          // Create a hidden form
+          var form = document.createElement('form');
+          form.method = 'post';
+          form.action = "{% url 'scrape_data' %}"; // Replace 'scrape_data' with the actual URL
+          
+          // Add CSRF token input
+          var csrfInput = document.createElement('input');
+          csrfInput.type = 'hidden';
+          csrfInput.name = 'csrfmiddlewaretoken';
+          csrfInput.value = "{{ csrf_token }}"; // Use Django template tag to get CSRF token
+          form.appendChild(csrfInput);
+          
+          // Add URL input
+          var urlInput = document.createElement('input');
+          urlInput.type = 'hidden';
+          urlInput.name = 'url';
+          urlInput.value = url;
+          form.appendChild(urlInput);
+          
+          // Append the form to the document body
+          document.body.appendChild(form);
+          
+          // Submit the form
+          form.submit();
+      }
+  </script>
     <script>
       function setThemeById(id, themeClass) {
         var element = document.getElementById(id);

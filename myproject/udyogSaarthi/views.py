@@ -13,6 +13,7 @@ import requests
 from google.cloud import texttospeech
 import tempfile
 import os
+from dotenv import load_dotenv
 # import openai            
 
 
@@ -28,28 +29,28 @@ import os
 
 # Create your views here.
 
-def scrape_data_view(request):
-    if request.method == 'POST':
-        url = request.POST.get('url')
-        if url:
-            try:
-                response = requests.get(url)
-                if response.status_code == 200:
-                    soup = BeautifulSoup(response.content, 'html.parser')
-                    # Here, you can extract the data you need from the soup object
-                    # For example, let's extract all the text from the page
-                    data = soup.get_text()
-                    return render(request, 'home.html', {'data': data})
-                else:
-                    error_message = f"Failed to fetch data from URL. Status code: {response.status_code}"
-                    return render(request, 'home.html', {'error': error_message})
-            except Exception as e:
-                error_message = f"An error occurred: {str(e)}"
-                return render(request, 'home.html', {'error': error_message})
-        else:
-            return render(request, 'home.html', {'error': 'URL is required'})
+# def scrape_data_view(request):
+#     if request.method == 'POST':
+#         url = request.POST.get('url')
+#         if url:
+#             try:
+#                 response = requests.get(url)
+#                 if response.status_code == 200:
+#                     soup = BeautifulSoup(response.content, 'html.parser')
+#                     # Here, you can extract the data you need from the soup object
+#                     # For example, let's extract all the text from the page
+#                     data = soup.get_text()
+#                     return render(request, 'home.html', {'data': data})
+#                 else:
+#                     error_message = f"Failed to fetch data from URL. Status code: {response.status_code}"
+#                     return render(request, 'home.html', {'error': error_message})
+#             except Exception as e:
+#                 error_message = f"An error occurred: {str(e)}"
+#                 return render(request, 'home.html', {'error': error_message})
+#         else:
+#             return render(request, 'home.html', {'error': 'URL is required'})
 
-    return render(request, 'home.html')
+#     return render(request, 'home.html')
 
 
 # def scrape_data(request,url):
@@ -113,6 +114,56 @@ def scrape_data_view(request):
 
 #     return response
 
+def scrape_data_view(request):
+    if request.method == 'POST':
+        url = request.POST.get('url')
+        if url:
+            try:
+                # Scrape data from the URL
+                response = requests.get(url)
+                if response.status_code == 200:
+                    soup = BeautifulSoup(response.content, 'html.parser')
+                    # Extract the text from the page
+                    data = soup.get_text()
+                    load_dotenv()
+                    api_key = os.getenv("API_KEY")
+                    print("API Key:", api_key)
+
+                    # Convert the scraped text to speech
+                    text = data
+                    url = "https://cloudlabs-text-to-speech.p.rapidapi.com/synthesize"
+                    payload = {
+                        "voice_code": "en-US-1",
+                        "text": text,
+                        "speed": "1.00",
+                        "pitch": "1.00",
+                        "output_type": "audio_url"
+                    }
+                    headers = {
+                        "X-RapidAPI-Key": api_key,
+                        "X-RapidAPI-Host": "cloudlabs-text-to-speech.p.rapidapi.com"
+                    }
+                    response = requests.post(url, data=payload, headers=headers)
+                    
+                    if response.status_code == 200:
+                        data = response.json()
+                        audio_url = data['result']['audio_url']
+                        # Redirect the user to the audio URL
+                        return redirect(audio_url)
+                    else:
+                        return HttpResponse("Error: Unable to convert text to speech", status=response.status_code)
+
+                else:
+                    error_message = f"Failed to fetch data from URL. Status code: {response.status_code}"
+                    return render(request, 'home.html', {'error': error_message})
+            except Exception as e:
+                error_message = f"An error occurred: {str(e)}"
+                return render(request, 'home.html', {'error': error_message})
+        else:
+            return render(request, 'home.html', {'error': 'URL is required'})
+
+    return render(request, 'home.html')
+
 def base(request):
     user = request.user
     return render(request,'base.html',{'user':user})
@@ -175,6 +226,10 @@ def register_candidate(request):
         return render(request, 'register_candidate.html')
     
 
+def candidate_profile(request):
+    candidate = CandidateProfileNew.objects.filter(user=request.user).first()
+    print(candidate)
+    return render(request, 'candidate_profile.html', {'candidate': candidate})
 
 def register_employer(request):   
 
@@ -362,11 +417,11 @@ def candidate_home (request):
     job= jobs.objects.all().order_by('-id')[:3]
     return render(request, 'candidate_home.html',{"jobs":job})
 
-@login_required(login_url="candidate_login")
-def candidate_profile(request):
-    candidate = CandidateProfile.objects.filter(user=request.user)
+# @login_required(login_url="candidate_login")
+# def candidate_profile(request):
+#     candidate = CandidateProfile.objects.filter(user=request.user)
     
-    return render(request, "candidate_profile.html",{"candidate":candidate})
+#     return render(request, "candidate_profile.html",{"candidate":candidate})
 
 def previous_Year_questions(request):
     PYQ = PYQs.objects.all()

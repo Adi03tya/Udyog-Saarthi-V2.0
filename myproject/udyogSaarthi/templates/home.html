@@ -220,21 +220,59 @@
 </div>
     
 
-<div class="container">
-<h1>Scrape Data from URL</h1>
+<!-- <div class="container">
+<h1>Read This Page</h1>
 <form method="post" action="{% url 'scrape_data' %}">
     {% csrf_token %}
-    <label for="url">Enter URL:</label>
+    <label for="url">Enter Page URL:</label>
     <input type="text" id="url" name="url">
-    <button type="submit">Scrape Data</button>
+    <button type="submit">Submit</button>
 </form>
-</div>
-<div class="container">
+</div> -->
+<!-- <div class="container">
 {% if data %}
     <h2>Scraped Data:</h2>
     <pre>{{ data }}</pre>
 {% endif %}
-</div>
+</div> -->
+
+<!-- <div class="container">
+    <h1>Read This Page</h1>
+    <button onclick="submitForm()">Read This Page</button>
+</div> -->
+
+<!-- <script>
+    function submitForm() {
+        // Define the specific URL
+        var url = window.location.href; // Replace this with your specific URL
+        
+        // Create a hidden form
+        var form = document.createElement('form');
+        form.method = 'post';
+        form.action = "{% url 'scrape_data' %}"; // Replace 'scrape_data' with the actual URL
+        
+        // Add CSRF token input
+        var csrfInput = document.createElement('input');
+        csrfInput.type = 'hidden';
+        csrfInput.name = 'csrfmiddlewaretoken';
+        csrfInput.value = "{{ csrf_token }}"; // Use Django template tag to get CSRF token
+        form.appendChild(csrfInput);
+        
+        // Add URL input
+        var urlInput = document.createElement('input');
+        urlInput.type = 'hidden';
+        urlInput.name = 'url';
+        urlInput.value = url;
+        form.appendChild(urlInput);
+        
+        // Append the form to the document body
+        document.body.appendChild(form);
+        
+        // Submit the form
+        form.submit();
+    }
+</script> -->
+
 
 </div>
 <!-- <div><h1>Web Scraping Form</h1>

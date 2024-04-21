@@ -41,12 +41,13 @@ urlpatterns = [
     path('candidate_profile',candidate_profile,name='candidate_profile'),
     path('tutorials',tutorials,name='tutorials'),
     path('base',base,name='base'),
-    path('home',home,name='home'),
+    # path('home',home,name='home'),
     # path('generate-speech/', generate_speech, name='generate_speech'),
     path('register_candidate_new/',register_candidate_new,name='register_candidate_new'),
     # path('convert_to_speech/', convert_to_speech, name='convert_to_speech')
     # path('scrape_data/',scrape_data,name='scrape_data'),
     path('scrape/', scrape_data_view, name='scrape_data'),
+    path('candidate_profile/', candidate_profile, name='candidate_profile'),
 
 ]
 
