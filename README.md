@@ -24,7 +24,7 @@
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/udyog-sarathi.git
+   git clone https://github.com/Adi03tya/Udyog-Saarthi-V2.0
    cd udyog-sarathi
    ```
 
