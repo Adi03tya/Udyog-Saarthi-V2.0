@@ -1,0 +1,211 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-14 16:32+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: .\udyogSaarthi\templates\base.html:119
+msgid "Read This Page"
+msgstr "ही पृष्ठ वाचा"
+
+#: .\udyogSaarthi\templates\base.html:120
+msgid "Font-size:"
+msgstr "फॉन्ट आकार:"
+
+#: .\udyogSaarthi\templates\base.html:122
+msgid "A"
+msgstr "अ"
+
+#: .\udyogSaarthi\templates\base.html:124
+msgid "Select Theme:"
+msgstr "थीम निवडा:"
+
+#: .\udyogSaarthi\templates\base.html:161
+msgid "Language:"
+msgstr "भाषा:"
+
+#: .\udyogSaarthi\templates\base.html:197
+msgid "Udyog Sarathi"
+msgstr "उद्योग सारथी"
+
+#: .\udyogSaarthi\templates\base.html:204
+msgid "Home"
+msgstr "मुखपृष्ठ"
+
+#: .\udyogSaarthi\templates\base.html:207
+msgid "Jobs"
+msgstr "नोकऱ्या"
+
+#: .\udyogSaarthi\templates\base.html:210
+msgid "Notifications"
+msgstr "सूचना"
+
+#: .\udyogSaarthi\templates\base.html:213
+msgid "PYQ'S"
+msgstr "परीक्षेचे प्रश्नपत्रिकेचे"
+
+#: .\udyogSaarthi\templates\base.html:216
+msgid "Tutorials"
+msgstr "शिकवण्या"
+
+#: .\udyogSaarthi\templates\base.html:230
+msgid "Logout"
+msgstr "बाहेर पडा"
+
+#: .\udyogSaarthi\templates\base.html:238
+msgid "login"
+msgstr "लॉगिन"
+
+#: .\udyogSaarthi\templates\base.html:240
+msgid "Login as Candidate"
+msgstr "उमेदवार म्हणून लॉगिन करा"
+
+#: .\udyogSaarthi\templates\base.html:241
+msgid "Login as Employer"
+msgstr "नियोजक म्हणून लॉगिन करा"
+
+#: .\udyogSaarthi\templates\base.html:247
+msgid " Register as <br> Candidate "
+msgstr "नोंदणी करा <br> उमेदवार म्हणून"
+
+#: .\udyogSaarthi\templates\base.html:248
+msgid " Register as <br> Employer "
+msgstr "नोंदणी करा <br> नियोजक म्हणून"
+
+#: .\udyogSaarthi\templates\base.html:281
+msgid "About us"
+msgstr "आमच्याबद्दल"
+
+#: .\udyogSaarthi\templates\base.html:284
+msgid ""
+"   The purpose of the <b>Udyog Saarthi</b> is to address the significant "
+"challenges faced by individuals with disabilities in\n"
+"               accessing employment opportunities and acquiring essential "
+"job skills. This digital platform is\n"
+"                designed with a profound commitment to empower this "
+"demographic group by providing them not only \n"
+"                with the means to secure meaningful employment but also with "
+"avenues for skill development and personal growth.\n"
+"                 In essence, the project seeks to enhance the quality of "
+"life for individuals with disabilities\n"
+"                  by promoting self-reliance and economic independence. "
+msgstr ""
+"<b>उद्योग सारथी</b> चे उद्दीष्ट म्हणजे अपंग व्यक्तींना रोजगाराच्या संधी मिळविणे आणि "
+"महत्वाचे नोकरी कौशल्ये मिळविणे या मोठ्या आव्हानांचा सामना करणे. "
+"हा डिजिटल प्लॅटफॉर्म याच्याशी संबंधित गटाला केवळ अर्थपूर्ण रोजगार मिळविण्याचे साधन देत नाही "
+"तर कौशल्य विकास आणि व्यक्तिगत विकासाच्या मार्गांनाही प्रोत्साहन देतो. "
+"मूलत: हा प्रकल्प स्वत:ची आत्मनिर्भरता आणि आर्थिक स्वावलंबन वाढविणे हे उद्दिष्ट आहे."
+
+#: .\udyogSaarthi\templates\base.html:296
+msgid "© 2020 Udyog Sarthi.com"
+msgstr ""
+
+#: .\udyogSaarthi\templates\home.html:86
+msgid "Job Openings"
+msgstr "नोकरीच्या रिक्त जागा"
+
+#: .\udyogSaarthi\templates\home.html:95
+msgid "Posted By :"
+msgstr "प्रकाशित केलेले :"
+
+#: .\udyogSaarthi\templates\home.html:97
+msgid "Openings:"
+msgstr "रिक्त जागा:"
+
+#: .\udyogSaarthi\templates\home.html:99
+msgid "Location:"
+msgstr "स्थान:"
+
+#: .\udyogSaarthi\templates\home.html:114
+#: .\udyogSaarthi\templates\home.html:118
+msgid "Apply"
+msgstr "अर्ज करा"
+
+#: .\udyogSaarthi\templates\home.html:137
+msgid "Our Services"
+msgstr "आमच्या सेवा"
+
+#: .\udyogSaarthi\templates\home.html:145
+msgid "Job Mapping"
+msgstr "नोकरी नकाशा"
+
+#: .\udyogSaarthi\templates\home.html:147
+msgid ""
+"To explore suitable job roles for persons with disability across\n"
+"            sectors.  "
+msgstr "विभागांमध्ये अपंग व्यक्तींसाठी योग्य नोकरी भूमिका शोधणे."
+
+#: .\udyogSaarthi\templates\home.html:157
+msgid "Accessibility Audit"
+msgstr "प्रवेश क्षमता तपासणी"
+
+#: .\udyogSaarthi\templates\home.html:159
+msgid ""
+" To assess Physical accessibility of a worksite and suggest alterations\n"
+"            to achieve the same.  "
+msgstr "कार्यस्थळाची भौतिक प्रवेश क्षमता तपासणे आणि ते प्राप्त करण्यासाठी बदलांचा सल्ला देणे."
+
+#: .\udyogSaarthi\templates\home.html:169
+msgid "Sensitization Workshop"
+msgstr "संवेदनशीलता कार्यशाळा"
+
+#: .\udyogSaarthi\templates\home.html:171
+msgid ""
+" To create awareness and attitudinal accessibility at different levels of\n"
+"           the workforce in an\n"
+"           organisation.  "
+msgstr "संस्थेमध्ये कार्यबलाच्या विविध स्तरांवर जागरूकता आणि दृष्टिकोण प्रवेश क्षमता निर्माण करणे."
+
+#: .\udyogSaarthi\templates\home.html:182
+msgid "Sign Language Interpreter"
+msgstr "संकेत भाषा अनुवादक"
+
+#: .\udyogSaarthi\templates\home.html:184
+msgid ""
+" It involves supporting hiring organizations with Sign Language\n"
+"            Interpreter for Induction\n"
+"            training of PwD workforce (Hearing Impaired or Hearing Hard). "
+msgstr "यामध्ये अपंग कार्यबल (श्रवण बाधित) च्या परिचय प्रशिक्षणासाठी संकेत भाषा अनुवादकासह भर्ती संस्थांचे समर्थन समाविष्ट आहे."
+
+#: .\udyogSaarthi\templates\home.html:195
+msgid "Secondary Training"
+msgstr "द्वितीयक प्रशिक्षण"
+
+#: .\udyogSaarthi\templates\home.html:197
+msgid ""
+"  It involves anticipating and building competencies for future needs to\n"
+"            equip the PwD\n"
+"            workforce with the required skill set for career development and "
+"growth. "
+msgstr "यामध्ये भविष्यातील आवश्यकतांचे अंदाज घेणे आणि विकलांग कार्यबलाला करिअर विकास आणि वाढीसाठी आवश्यक कौशल्ये प्रदान करणे समाविष्ट आहे."
+
+#: .\udyogSaarthi\templates\home.html:208
+msgid "Return to Work"
+msgstr "कामावर परत जाणे"
+
+#: .\udyogSaarthi\templates\home.html:210
+msgid ""
+" Every worker has a probability to acquire a disability or illness that\n"
+"           hinders their ability\n"
+"           to work. Thus, return to work or rehabilitation of disabled "
+"workforce is\n"
+"           of immense\n"
+"           significance as it assists employees to participate in work and "
+"earn a\n"
+"           livelihood,\n"
+"           contributing to the organisation's growth while also "
+"recuperating.  "
+msgstr "प्रत्येक कर्मचाऱ्याला अपंगत्व किंवा आजारपण होण्याची शक्यता असते, जे त्यांना काम करण्याच्या क्षमतेत अडथळा आणते. त्यामुळे, कामावर परत जाणे किंवा विकलांग कार्यबलाचे पुनर्वसन अत्यंत महत्त्वाचे आहे, कारण ते कर्मचारी कामात भाग घेण्यास आणि उपजीविका मिळविण्यास मदत करते, आणि त्याच वेळी संस्थेच्या वाढीसाठी योगदान देऊन पुनर्वसन करते."

@@ -14,6 +14,7 @@ from google.cloud import texttospeech
 import tempfile
 import os
 from dotenv import load_dotenv
+from django.utils.translation import gettext as _
 # import openai            
 
 
@@ -28,92 +29,6 @@ from dotenv import load_dotenv
 
 
 # Create your views here.
-
-# def scrape_data_view(request):
-#     if request.method == 'POST':
-#         url = request.POST.get('url')
-#         if url:
-#             try:
-#                 response = requests.get(url)
-#                 if response.status_code == 200:
-#                     soup = BeautifulSoup(response.content, 'html.parser')
-#                     # Here, you can extract the data you need from the soup object
-#                     # For example, let's extract all the text from the page
-#                     data = soup.get_text()
-#                     return render(request, 'home.html', {'data': data})
-#                 else:
-#                     error_message = f"Failed to fetch data from URL. Status code: {response.status_code}"
-#                     return render(request, 'home.html', {'error': error_message})
-#             except Exception as e:
-#                 error_message = f"An error occurred: {str(e)}"
-#                 return render(request, 'home.html', {'error': error_message})
-#         else:
-#             return render(request, 'home.html', {'error': 'URL is required'})
-
-#     return render(request, 'home.html')
-
-
-# def scrape_data(request,url):
-#     # Send a GET request to the webpage
-#     response = requests.get(url)
-    
-#     # Check if the request was successful (status code 200)
-#     if response.status_code == 200:
-#         # Parse the HTML content using BeautifulSoup
-#         soup = BeautifulSoup(response.content, 'html.parser')
-        
-#         # Extract the desired information from the webpage
-#         # For example, let's extract all the text from <p> tags
-#         paragraphs = soup.find_all('p')
-        
-#         # Print the extracted text
-#         for paragraph in paragraphs:
-#             print(paragraph.get_text())
-#     else:
-#         # If the request was not successful, print an error message
-#         print(f"Failed to fetch data from {url}. Status code: {response.status_code}")
-
-
-
-
-# def convert_to_speech(request, url):
-#     # URL of the webpage to scrape
-#     # For demonstration, let's pass the URL as a query parameter in the request
-#     url = request.GET.get('url', '')
-
-#     # Send a GET request to the webpage
-#     response = requests.get(url)
-
-#     # Create a BeautifulSoup object with the webpage content
-#     soup = BeautifulSoup(response.content, "html.parser")
-
-#     # Extract text from the webpage
-#     text = soup.get_text()
-#     print (text)
-#     # Convert text to speech using gTTS
-#     texttospeech = texttospeech(text=text, lang='en')
-
-#     # Save the speech to a temporary file
-#     with tempfile.NamedTemporaryFile(delete=False) as fp:
-#         texttospeech.save(fp.name)
-#         file_path = fp.name
-
-#     # Open the temporary file and read its content
-#     with open(file_path, 'rb') as fp:
-#         speech_data = fp.read()
-
-#     # Delete the temporary file
-#     os.unlink(file_path)
-
-#     # Set response headers
-#     response = HttpResponse(content_type='audio/mpeg')
-#     response['Content-Disposition'] = 'attachment; filename="speech.mp3"'
-
-#     # Return the speech data as an HTTP response
-#     response.write(speech_data)
-
-#     return response
-
 def scrape_data_view(request):
     if request.method == 'POST':
         url = request.POST.get('url')
@@ -123,6 +38,7 @@ def scrape_data_view(request):
                 response = requests.get(url)
                 if response.status_code == 200:
                     soup = BeautifulSoup(response.content, 'html.parser')
+
                     # Extract the text from the page
                     data = soup.get_text()
                     load_dotenv()
@@ -149,6 +65,7 @@ def scrape_data_view(request):
                         data = response.json()
                         audio_url = data['result']['audio_url']
                         # Redirect the user to the audio URL
+                        
                         return redirect(audio_url)
                     else:
                         return HttpResponse("Error: Unable to convert text to speech", status=response.status_code)
@@ -166,7 +83,8 @@ def scrape_data_view(request):
 
 def base(request):
     user = request.user
-    return render(request,'base.html',{'user':user})
+    # about_text = _("Udyog Saarthi is a platform that connects job seekers with employers. Our goal is to help people with disabilities find meaningful employment opportunities.") 
+    return render(request,'base.html',{'user':user })
 
 def home(request):
     job= jobs.objects.all().order_by('-id')[:3]
@@ -377,8 +295,8 @@ def posted_job(request):
 
 @login_required(login_url="employer_login")
 def applicants(request,job_id):
-   
-   job = jobs.objects.get(id=job_id)
+   job = Posted_job.objects.get(id=job_id)
+#    job = jobs.objects.get(id=job_id)
    applicants = Application.objects.filter(job=job.id)
 
    return render(request, 'posted_job.html', {'applicants': applicants, 'job': job})
@@ -433,6 +351,8 @@ def tutorials(request):
 def jobs_page(request):
     # applications = Application.objects.filter(candidate=request.user)
     job= jobs.objects.all().order_by('-id')
+    if request.GET.get('search'):
+        job = jobs.objects.filter(job_title__icontains=request.GET.get('search')) | jobs.objects.filter(organization_name__icontains=request.GET.get('search'))
     # return render(request,'jobs_page.html',{"jobs":job,"applications":applications})
     if request.user.is_authenticated:
         applications = Application.objects.filter(candidate=request.user)

@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% load static %} {% block title %}Home{% endblock %}
+{% extends 'base.html' %} {% load i18n %} {% load static %} {% block title %}Home{% endblock %}
+
 {% block content %}
 
 
@@ -41,6 +42,7 @@
   }
 </style>
 
+
 <div style="display: flex; flex-direction: column; justify-content: center">
   <div
     class="slideshow-container"
@@ -49,19 +51,20 @@
     <div class="mySlides ">
       <img
         src="https://assets.weforum.org/editor/RnDfH5X465zt6zMZOF5vmwXSjvIMakldWwe62vMIoOU.jpg"
-        style="width: 1500px; height: 500px; object-fit:fill;" 
+        style="width: 100%; height: 400px; object-fit:contain;" 
       />
     </div>
     <div class="mySlides ">
       <img
-        src="https://www.pointfranchise.co.uk/images/zoom/disabled.jpg"
-        style="width: 1500px; height: 500px ; object-fit:fill;"
+        
+        src="https://media.licdn.com/dms/image/v2/D4E12AQHbjpdrx7voUQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1676649535680?e=2147483647&v=beta&t=0hu34xJ-Sz_eKx9ewSeBoTK_h0Slf0bjuhGtioCW3GI"
+        style="width: 100%; height: 400px ; object-fit:contain;"
       />
     </div>
     <div class="mySlides ">
       <img
         src="{% static '/assets/job.jpg' %}"
-        style="width: 1500px; height: 500px ; object-fit: fill;"
+        style="width: 100%; height: 400px ; object-fit:contain;"
       />
     </div>
   </div>
@@ -81,7 +84,7 @@
       box-shadow: 2px 4px 10px 3px rgba(17, 2, 32, 0.2);
     "
   >
-    <h1 style="padding-left: 20px">Job Openings</h1>
+    <h1 style="padding-left: 20px">{% trans 'Job Openings' %}</h1>
 
     <div
       class="jobs-grid"
@@ -90,11 +93,11 @@
       {% for job in jobs %}
       <div class="job-card">
         <h2>{{ job.job_title }}</h2>
-        <h4>Posted By : {{ job.organization_name }}</h4>
+        <h4>{% trans 'Posted By :' %}  {{ job.organization_name }}</h4>
         <p>{{ job.job_description | truncatechars:80 }}</p>
-        <p>Openings: {{ job.openings }}</p>
+        <p> {% trans 'Openings:' %}  {{ job.openings }}</p>
         <p>
-          Location: <span style="font-weight: bold">{{ job.location }}</span>
+         {% trans 'Location:' %}  <span style="font-weight: bold">{{ job.location }}</span>
         </p>
 
         <div
@@ -109,11 +112,11 @@
         >
           {% if user.is_authenticated %}
           <a href="{% url 'apply_job' job.id %}">
-            <button type="button" class="apply-btn">Apply</button>
+            <button type="button" class="apply-btn"> {% trans 'Apply' %} </button>
           </a>
           {% else %}
           <a href="{% url 'candidate_login' %}">
-            <button type="button" class="apply-btn">Apply</button>
+            <button type="button" class="apply-btn">{% trans 'Apply' %} </button>
           </a>
           {% endif %}
         </div>
@@ -132,7 +135,7 @@
     <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" rel="stylesheet">
     <div class="serviceRow">
       <h2 style="text-align: center; font-size: 35px; margin-top: 40px; margin-bottom: 25px;color: var(--text-dark-grey);">
-        Our Services</h2>
+        {% trans 'Our Services' %}   </h2>
     </div>
     <div class="serviceRow"  style="display: grid; grid-template-columns: 1fr 1fr 1fr; ">
       <div class="serviceColumn">
@@ -140,10 +143,10 @@
           <div class="icon-wrapper">
             <i class="fas fa-edit"></i>
           </div>
-          <h3>Job Mapping</h3>
+          <h3> {% trans 'Job Mapping' %}  </h3>
           <p class="p2">
-            To explore suitable job roles for persons with disability across
-            sectors.
+            {% blocktrans %}To explore suitable job roles for persons with disability across
+            sectors.  {% endblocktrans %}
           </p>
         </div>
       </div>
@@ -152,10 +155,10 @@
           <div class="icon-wrapper">
             <i class="fa fa-file-text"></i>
           </div>
-          <h3>Accessibility Audit</h3>
+          <h3> {% trans 'Accessibility Audit' %} </h3>
           <p class="p2">
-            To assess Physical accessibility of a worksite and suggest alterations
-            to achieve the same.
+            {% blocktrans %} To assess Physical accessibility of a worksite and suggest alterations
+            to achieve the same.  {% endblocktrans %}
           </p>
         </div>
       </div>
@@ -164,11 +167,11 @@
           <div class="icon-wrapper">
             <i class="fa fa-handshake"></i>
           </div>
-          <h3>Sensitization Workshop</h3>
+          <h3> {% trans 'Sensitization Workshop' %}</h3>
           <p class="p2">
-            To create awareness and attitudinal accessibility at different levels of
-            the workforce in an
-            organisation.
+           {% blocktrans %} To create awareness and attitudinal accessibility at different levels of
+           the workforce in an
+           organisation.  {% endblocktrans %}
           </p>
         </div>
       </div>
@@ -177,11 +180,11 @@
           <div class="icon-wrapper">
             <i class="fa fa-american-sign-language-interpreting"></i>
           </div>
-          <h3>Sign Language Interpreter</h3>
+          <h3> {% trans 'Sign Language Interpreter'%} </h3>
           <p class="p2">
-            It involves supporting hiring organizations with Sign Language
+            {% blocktrans %} It involves supporting hiring organizations with Sign Language
             Interpreter for Induction
-            training of PwD workforce (Hearing Impaired or Hearing Hard).
+            training of PwD workforce (Hearing Impaired or Hearing Hard). {% endblocktrans %}
           </p>
         </div>
       </div>
@@ -190,11 +193,11 @@
           <div class="icon-wrapper">
             <i class="fa fa-list-ul"></i>
           </div>
-          <h3>Secondary Training</h3>
+          <h3> {% trans 'Secondary Training' %} </h3>
           <p class="p2">
-            It involves anticipating and building competencies for future needs to
+            {% blocktrans %}  It involves anticipating and building competencies for future needs to
             equip the PwD
-            workforce with the required skill set for career development and growth.
+            workforce with the required skill set for career development and growth. {% endblocktrans %}
           </p>
         </div>
       </div>
@@ -203,15 +206,15 @@
           <div class="icon-wrapper">
             <i class="fa fa-briefcase"></i>
           </div>
-          <h3>Return to Work</h3>
+          <h3>{% trans  'Return to Work' %}</h3>
           <p class="p2">
-            Every worker has a probability to acquire a disability or illness that
-            hinders their ability
-            to work. Thus, return to work or rehabilitation of disabled workforce is
-            of immense
-            significance as it assists employees to participate in work and earn a
-            livelihood,
-            contributing to the organisation's growth while also recuperating.
+            {% blocktrans %} Every worker has a probability to acquire a disability or illness that
+           hinders their ability
+           to work. Thus, return to work or rehabilitation of disabled workforce is
+           of immense
+           significance as it assists employees to participate in work and earn a
+           livelihood,
+           contributing to the organisation's growth while also recuperating.  {% endblocktrans %}
           </p>
         </div>
       </div>

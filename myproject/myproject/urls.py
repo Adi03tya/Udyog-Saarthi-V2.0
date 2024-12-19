@@ -19,8 +19,8 @@ from django.urls import path
 from udyogSaarthi.views import*
 from django.conf import settings
 from django.conf.urls.static import static
-
-
+from django.views.i18n import set_language
+from django.conf.urls.i18n import i18n_patterns
 
 
 urlpatterns = [
@@ -48,8 +48,10 @@ urlpatterns = [
     # path('scrape_data/',scrape_data,name='scrape_data'),
     path('scrape/', scrape_data_view, name='scrape_data'),
     path('candidate_profile/', candidate_profile, name='candidate_profile'),
+    path('i18n/', set_language, name='set_language'),
 
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
